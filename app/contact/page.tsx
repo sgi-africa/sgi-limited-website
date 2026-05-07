@@ -29,8 +29,8 @@ const contactDetails = [
   },
   {
     icon: MapPinIcon,
-    label: "Headquarters",
-    value: "Tanzania",
+    label: "Office address",
+    lines: [...siteConfig.officeAddressLines],
   },
   {
     icon: GlobeIcon,
@@ -42,7 +42,7 @@ const contactDetails = [
     label: "Response time",
     value: "Within 1 business day",
   },
-];
+] as const;
 
 export default function ContactPage() {
   return (
@@ -129,18 +129,29 @@ export default function ContactPage() {
                         <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
                           {detail.label}
                         </p>
-                        {detail.href ? (
+                        {"lines" in detail ? (
+                          <div className="space-y-1">
+                            {detail.lines.map((line) => (
+                              <p
+                                key={line}
+                                className="text-sm font-medium leading-snug text-foreground"
+                              >
+                                {line}
+                              </p>
+                            ))}
+                          </div>
+                        ) : "href" in detail && detail.href ? (
                           <a
                             href={detail.href}
                             className="text-sm font-medium text-foreground transition-colors hover:text-accent"
                           >
                             {detail.value}
                           </a>
-                        ) : (
+                        ) : "value" in detail ? (
                           <p className="text-sm font-medium text-foreground">
                             {detail.value}
                           </p>
-                        )}
+                        ) : null}
                       </div>
                     </li>
                   ))}

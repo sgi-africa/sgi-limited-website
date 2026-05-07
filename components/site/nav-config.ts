@@ -24,9 +24,15 @@ export const siteConfig = {
   shortName: "SGI",
   tagline: "Technology Solutions for Impact-Driven Organizations",
   description:
-    "Software Group Innovation builds digital systems that drive financial inclusion, community transformation and digital empowerment -cross Africa and beyond.",
+    "Software Group Innovation builds digital systems that drive financial inclusion, community transformation and digital empowerment across Africa and beyond.",
   email: "info@sgi.africa",
-  location: "Tanzania · Operating Globally",
+  /** Street + mailing lines (single source of truth for office address). */
+  officeAddressLines: [
+    "Textile House, Morogoro Road / Indira Gandhi Street",
+    "Dar es Salaam, Tanzania",
+  ] as const,
+  /** Short line for chips, hero bullets, metadata. */
+  locationSummary: "Dar es Salaam, Tanzania · Operating globally",
   social: {
     linkedin: "https://www.linkedin.com",
     twitter: "https://twitter.com",

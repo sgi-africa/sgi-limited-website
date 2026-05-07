@@ -75,9 +75,15 @@ export function Footer() {
                   {siteConfig.email}
                 </a>
               </li>
-              <li className="flex items-center gap-2">
-                <MapPinIcon className="size-4 text-accent" />
-                <span>{siteConfig.location}</span>
+              <li className="flex items-start gap-2">
+                <MapPinIcon className="mt-0.5 size-4 shrink-0 text-accent" />
+                <address className="not-italic">
+                  {siteConfig.officeAddressLines.map((line) => (
+                    <span key={line} className="block">
+                      {line}
+                    </span>
+                  ))}
+                </address>
               </li>
             </ul>
             <div className="flex items-center gap-2 pt-1">

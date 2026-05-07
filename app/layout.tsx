@@ -40,6 +40,7 @@ export const metadata: Metadata = {
     "health innovation",
     "cybersecurity",
     "Tanzania",
+    "Dar es Salaam",
     "Africa",
     "community transformation",
   ],

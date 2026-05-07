@@ -272,7 +272,7 @@ export default function ImpactPage() {
                   Built locally. Designed for the world.
                 </h2>
                 <p className="text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-                  Headquartered in Tanzania and operating with global ambition,
+                  Headquartered in Dar es Salaam, Tanzania, and operating with global ambition,
                   SGI is creating a future where technology is a pathway to
                   opportunity - not a privilege. Our roadmap targets
                   cross-border partnerships, regional expansion and

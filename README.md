@@ -37,7 +37,7 @@ components/
     team-card.tsx
     service-block.tsx
     cta-banner.tsx
-    nav-config.ts         Nav links + global site config (email, location)
+    nav-config.ts         Nav links + global site config (email, office address)
 lib/
   utils.ts                cn() — clsx + tailwind-merge
 ```

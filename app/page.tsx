@@ -26,7 +26,7 @@ import { PillarCard } from "@/components/site/pillar-card";
 import { Section } from "@/components/site/section";
 import { SectionHeading } from "@/components/site/section-heading";
 import { StatCard } from "@/components/site/stat-card";
-import { sgiProducts } from "@/components/site/nav-config";
+import { sgiProducts, siteConfig } from "@/components/site/nav-config";
 
 const services = [
   {
@@ -222,7 +222,7 @@ export default function Home() {
                 {[
                   "Innovation with purpose",
                   "Built for the long horizon",
-                  "Tanzania · Operating globally",
+                  siteConfig.locationSummary,
                   "Community-first engineering",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
@@ -270,8 +270,8 @@ export default function Home() {
 
                   <div className="grid grid-cols-3 gap-3">
                     {[
-                      { label: "Communities", value: "20+" },
-                      { label: "Systems", value: "12+" },
+                      { label: "Communities", value: "10+" },
+                      { label: "Systems", value: "6+" },
                       { label: "Users", value: "5K+" },
                     ].map((s) => (
                       <div
