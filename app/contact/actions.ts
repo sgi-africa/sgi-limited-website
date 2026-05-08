@@ -1,5 +1,9 @@
 "use server";
 
+import { Resend } from "resend";
+
+import { siteConfig } from "@/components/site/nav-config";
+
 export type ContactState = {
   status: "idle" | "success" | "error";
   message: string;
@@ -21,6 +25,12 @@ export const initialContactState: ContactState = {
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function getResendClient(): Resend | null {
+  const key = process.env.RESEND_API_KEY?.trim();
+  if (!key) return null;
+  return new Resend(key);
+}
 
 export async function submitContact(
   _prev: ContactState,
@@ -45,9 +55,80 @@ export async function submitContact(
     };
   }
 
-  // Simulated submission. In production, swap this out for a real
-  // mail service (Resend, SES, SendGrid) or persist the lead to a CRM.
-  await new Promise((resolve) => setTimeout(resolve, 600));
+  const resend = getResendClient();
+  if (!resend) {
+    console.error("[contact] RESEND_API_KEY is not set.");
+    return {
+      status: "error",
+      message:
+        "We couldn’t send your message right now. Please email us directly or try again later.",
+      values: { name, email, message },
+    };
+  }
+
+  const from = process.env.RESEND_FROM?.trim();
+  if (!from) {
+    console.error("[contact] RESEND_FROM is not set.");
+    return {
+      status: "error",
+      message:
+        "Email delivery is not configured. Please contact us by email directly.",
+      values: { name, email, message },
+    };
+  }
+
+  const toRaw = process.env.RESEND_TO?.trim() ?? siteConfig.email;
+  const to = toRaw.split(",").map((a) => a.trim()).filter(Boolean);
+  if (to.length === 0) {
+    console.error("[contact] No recipient (RESEND_TO / siteConfig.email).");
+    return {
+      status: "error",
+      message:
+        "We couldn’t send your message right now. Please email us directly.",
+      values: { name, email, message },
+    };
+  }
+
+  const subject = `[${siteConfig.shortName} Contact] ${name}`;
+  const text = [
+    `New message from the ${siteConfig.name} website contact form.`,
+    "",
+    `Name: ${name}`,
+    `Email: ${email}`,
+    "",
+    "Message:",
+    message,
+  ].join("\n");
+
+  try {
+    const { error } = await resend.emails.send({
+      from,
+      to,
+      replyTo: email
+        ? [email]
+        : undefined,
+      subject,
+      text,
+    });
+
+    if (error) {
+      console.error("[contact] Resend API error:", error);
+      return {
+        status: "error",
+        message:
+          "We couldn’t send your message. Please try again in a moment or email us directly.",
+        values: { name, email, message },
+      };
+    }
+  } catch (e) {
+    console.error("[contact] send failed:", e);
+    return {
+      status: "error",
+      message:
+        "We couldn’t send your message. Please try again in a moment or email us directly.",
+      values: { name, email, message },
+    };
+  }
 
   return {
     status: "success",

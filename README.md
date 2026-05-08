@@ -19,7 +19,7 @@ app/
   contact/
     page.tsx              Contact page shell
     contact-form.tsx      Client form with useActionState
-    actions.ts            Server action — simulated submission
+    actions.ts            Server action — sends contact mail via Resend
 components/
   ui/                     shadcn primitives (button, card, input, sheet, …)
   site/
@@ -82,11 +82,8 @@ npm run start        # Run production build
 npm run lint         # ESLint
 ```
 
+
 ## Configuration
-
-Update SEO metadata in `app/layout.tsx` (and per-page `metadata` exports).
-
----
 
 ## Tech stack
 
