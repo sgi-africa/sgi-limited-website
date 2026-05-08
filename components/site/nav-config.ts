@@ -13,7 +13,7 @@ export const sgiProducts = [
     name: "SGI VICOBA",
     tagline: "Community savings & lending, digitised",
     description:
-      "Our flagship platform for VICOBA groups and community financial institutions — transparent ledgers, member onboarding, savings and lending workflows, and audit-ready reporting. Built for grassroots financial inclusion.",
+      "Our flagship platform for VICOBA groups and community financial institutions - transparent ledgers, member onboarding, savings and lending workflows, and audit-ready reporting. Built for grassroots financial inclusion.",
     href: "https://sgi-vicoba.com/",
     category: "Financial innovation",
   },
