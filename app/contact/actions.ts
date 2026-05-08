@@ -4,25 +4,7 @@ import { Resend } from "resend";
 
 import { siteConfig } from "@/components/site/nav-config";
 
-export type ContactState = {
-  status: "idle" | "success" | "error";
-  message: string;
-  fieldErrors?: {
-    name?: string;
-    email?: string;
-    message?: string;
-  };
-  values?: {
-    name: string;
-    email: string;
-    message: string;
-  };
-};
-
-export const initialContactState: ContactState = {
-  status: "idle",
-  message: "",
-};
+import type { ContactState } from "./types";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -78,7 +60,10 @@ export async function submitContact(
   }
 
   const toRaw = process.env.RESEND_TO?.trim() ?? siteConfig.email;
-  const to = toRaw.split(",").map((a) => a.trim()).filter(Boolean);
+  const to = toRaw
+    .split(",")
+    .map((a) => a.trim())
+    .filter(Boolean);
   if (to.length === 0) {
     console.error("[contact] No recipient (RESEND_TO / siteConfig.email).");
     return {
@@ -104,9 +89,7 @@ export async function submitContact(
     const { error } = await resend.emails.send({
       from,
       to,
-      replyTo: email
-        ? [email]
-        : undefined,
+      replyTo: email ? [email] : undefined,
       subject,
       text,
     });

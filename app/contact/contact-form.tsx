@@ -11,7 +11,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
-import { initialContactState, submitContact, type ContactState } from "./actions";
+import {
+  initialContactState,
+  type ContactState,
+} from "./types";
+import { submitContact } from "./actions";
 
 function SubmitButton() {
   const { pending } = useFormStatus();
