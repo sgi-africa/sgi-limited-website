@@ -10,22 +10,22 @@ import { TeamCard } from "@/components/site/team-card";
 import { SITE_URL } from "@/components/site/nav-config";
 
 export const metadata: Metadata = {
-  title: "About SGI Africa",
+  title: "About SGI",
   description:
-    "Software Group Innovation (SGI) is a forward-thinking African technology startup dedicated to transforming communities through technology, innovation and opportunity — headquartered in Dar es Salaam, Tanzania.",
+    "Software Gateway Integrations Limited (SGI) is a forward-thinking African technology company dedicated to transforming communities through technology, innovation and opportunity — headquartered in Dar es Salaam, Tanzania.",
   alternates: {
     canonical: `${SITE_URL}/about`,
   },
   openGraph: {
     url: `${SITE_URL}/about`,
-    title: "About SGI Africa · Software Group Innovation",
+    title: "About SGI · Software Gateway Integrations Limited",
     description:
-      "Software Group Innovation (SGI) is a forward-thinking African technology startup dedicated to transforming communities through technology, innovation and opportunity — headquartered in Dar es Salaam, Tanzania.",
+      "Software Gateway Integrations Limited (SGI) is a forward-thinking African technology company dedicated to transforming communities through technology, innovation and opportunity — headquartered in Dar es Salaam, Tanzania.",
   },
   twitter: {
-    title: "About SGI Africa · Software Group Innovation",
+    title: "About SGI · Software Gateway Integrations Limited",
     description:
-      "Software Group Innovation (SGI) is a forward-thinking African technology startup dedicated to transforming communities through technology, innovation and opportunity — headquartered in Dar es Salaam, Tanzania.",
+      "Software Gateway Integrations Limited (SGI) is a forward-thinking African technology company dedicated to transforming communities through technology, innovation and opportunity — headquartered in Dar es Salaam, Tanzania.",
   },
 };
 
@@ -35,24 +35,28 @@ const leadership = [
     role: "Chief Executive Officer (CEO)",
     shortRole: "CEO",
     bio: "Provides strategic leadership, innovation direction, and long-term vision for SGI's global growth and community impact.",
+    image: "/Joseph Marwa.jpeg",
   },
   {
     name: "James Prosper Kweka",
     role: "Chief Financial Officer (CFO)",
     shortRole: "CFO",
     bio: "Oversees financial strategy, sustainability, resource allocation, and economic-growth systems across SGI's verticals.",
+    image: "/James Kweka.jpeg",
   },
   {
     name: "Oscar Erasmus Bitarohize",
     role: "Chief Technology Officer (CTO)",
     shortRole: "CTO",
     bio: "Leads technology development, software innovation, and digital infrastructure strategy for every system SGI ships.",
+    image: "/Oscar Erasmus.jpeg",
   },
   {
     name: "Muharami Abdu Jongo",
     role: "Chief Operating Officer (COO)",
     shortRole: "COO",
     bio: "Manages operational excellence, implementation systems, and organizational performance across programs.",
+    image: "/Muharami Jongo.jpeg",
   },
 ];
 
@@ -89,7 +93,7 @@ export default function AboutPage() {
           </FadeIn>
           <FadeIn delay={0.1}>
             <p className="mt-6 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Software Group Innovation (SGI) is a forward-thinking innovation
+              Software Gateway Integrations Limited (SGI) is a forward-thinking innovation
               ecosystem dedicated to transforming communities through
               technology, innovation, and opportunity. SGI exists to bridge the
               gap between technology and social-economic empowerment by creating
@@ -251,6 +255,7 @@ export default function AboutPage() {
                 role={member.role}
                 shortRole={member.shortRole}
                 bio={member.bio}
+                image={member.image}
               />
             </FadeIn>
           ))}

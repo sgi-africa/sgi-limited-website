@@ -17,20 +17,20 @@ import { SITE_URL } from "@/components/site/nav-config";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Explore SGI Africa's four practice areas — Technology Solutions, Financial Innovation, Health Innovation and Cybersecurity — built to deliver measurable, community-level impact across Africa.",
+    "Explore Software Gateway Integrations Limited's four practice areas — Technology Solutions, Financial Innovation, Health Innovation and Cybersecurity — built to deliver measurable, community-level impact across Africa.",
   alternates: {
     canonical: `${SITE_URL}/services`,
   },
   openGraph: {
     url: `${SITE_URL}/services`,
-    title: "Services · Software Group Innovation",
+    title: "Services · Software Gateway Integrations Limited",
     description:
-      "Explore SGI Africa's four practice areas — Technology Solutions, Financial Innovation, Health Innovation and Cybersecurity — built to deliver measurable, community-level impact across Africa.",
+      "Explore Software Gateway Integrations Limited's four practice areas — Technology Solutions, Financial Innovation, Health Innovation and Cybersecurity — built to deliver measurable, community-level impact across Africa.",
   },
   twitter: {
-    title: "Services · Software Group Innovation",
+    title: "Services · Software Gateway Integrations Limited",
     description:
-      "Explore SGI Africa's four practice areas — Technology Solutions, Financial Innovation, Health Innovation and Cybersecurity — built to deliver measurable, community-level impact across Africa.",
+      "Explore Software Gateway Integrations Limited's four practice areas — Technology Solutions, Financial Innovation, Health Innovation and Cybersecurity — built to deliver measurable, community-level impact across Africa.",
   },
 };
 

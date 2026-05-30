@@ -21,20 +21,20 @@ import { SITE_URL } from "@/components/site/nav-config";
 export const metadata: Metadata = {
   title: "Impact",
   description:
-    "SGI Africa's impact story — 10+ communities engaged, 5,000+ users empowered, and real systems built across financial inclusion, health innovation and cybersecurity in Africa.",
+    "Software Gateway Integrations Limited's impact story — 10+ communities engaged, 5,000+ users empowered, and real systems built across financial inclusion, health innovation and cybersecurity in Africa.",
   alternates: {
     canonical: `${SITE_URL}/impact`,
   },
   openGraph: {
     url: `${SITE_URL}/impact`,
-    title: "Impact · Software Group Innovation",
+    title: "Impact · Software Gateway Integrations Limited",
     description:
-      "SGI Africa's impact story — 10+ communities engaged, 5,000+ users empowered, and real systems built across financial inclusion, health innovation and cybersecurity in Africa.",
+      "Software Gateway Integrations Limited's impact story — 10+ communities engaged, 5,000+ users empowered, and real systems built across financial inclusion, health innovation and cybersecurity in Africa.",
   },
   twitter: {
-    title: "Impact · Software Group Innovation",
+    title: "Impact · Software Gateway Integrations Limited",
     description:
-      "SGI Africa's impact story — 10+ communities engaged, 5,000+ users empowered, and real systems built across financial inclusion, health innovation and cybersecurity in Africa.",
+      "Software Gateway Integrations Limited's impact story — 10+ communities engaged, 5,000+ users empowered, and real systems built across financial inclusion, health innovation and cybersecurity in Africa.",
   },
 };
 

@@ -20,9 +20,9 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const siteName = "Software Group Innovation";
+const siteName = "Software Gateway Integrations Limited";
 const siteDescription =
-  "Software Group Innovation (SGI) is an African technology startup building digital systems that drive financial inclusion, community transformation and digital empowerment - for organisations, businesses and communities across Africa and beyond.";
+  "Software Gateway Integrations Limited (SGI) is an African technology company building digital systems that drive financial inclusion, community transformation and digital empowerment - for organisations, businesses and communities across Africa and beyond.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -33,16 +33,15 @@ export const metadata: Metadata = {
   description: siteDescription,
   applicationName: siteName,
   keywords: [
-    "Software Group Innovation",
-    "SGI Africa",
+    "Software Gateway Integrations Limited",
     "SGI",
-    "African technology startup",
+    "African technology company",
     "digital innovation Africa",
     "fintech Africa",
     "financial inclusion",
     "health innovation",
     "cybersecurity Africa",
-    "Tanzania tech startup",
+    "Tanzania tech company",
     "Dar es Salaam",
     "digital transformation Africa",
     "community transformation",

@@ -4,8 +4,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "@id": `${SITE_URL}/#organization`,
-  name: "Software Group Innovation",
-  alternateName: ["SGI", "SGI Africa"],
+  name: "Software Gateway Integrations Limited",
+  alternateName: ["SGI", "Software Gateway Integrations"],
   url: SITE_URL,
   logo: {
     "@type": "ImageObject",
@@ -14,7 +14,7 @@ const organizationSchema = {
     height: 630,
   },
   description:
-    "Software Group Innovation (SGI) is an African technology startup building digital systems that drive financial inclusion, community transformation and digital empowerment — for organisations, businesses and communities across Africa and beyond.",
+    "Software Gateway Integrations Limited (SGI) is an African technology company building digital systems that drive financial inclusion, community transformation and digital empowerment — for organisations, businesses and communities across Africa and beyond.",
   foundingLocation: {
     "@type": "Place",
     name: "Dar es Salaam, Tanzania",
@@ -90,10 +90,10 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": `${SITE_URL}/#website`,
-  name: "Software Group Innovation",
+  name: "Software Gateway Integrations Limited",
   url: SITE_URL,
   description:
-    "The official website of Software Group Innovation (SGI Africa) — an African technology startup and innovation ecosystem.",
+    "The official website of Software Gateway Integrations Limited (SGI) — an African technology company and innovation ecosystem.",
   publisher: {
     "@id": `${SITE_URL}/#organization`,
   },

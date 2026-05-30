@@ -17,20 +17,20 @@ import { ContactForm } from "./contact-form";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Software Group Innovation (SGI Africa). Tell us about your organisation and what you're trying to transform — we'll reply within one business day.",
+    "Get in touch with Software Gateway Integrations Limited (SGI). Tell us about your organisation and what you're trying to transform — we'll reply within one business day.",
   alternates: {
     canonical: `${SITE_URL}/contact`,
   },
   openGraph: {
     url: `${SITE_URL}/contact`,
-    title: "Contact · Software Group Innovation",
+    title: "Contact · Software Gateway Integrations Limited",
     description:
-      "Get in touch with Software Group Innovation (SGI Africa). Tell us about your organisation and what you're trying to transform — we'll reply within one business day.",
+      "Get in touch with Software Gateway Integrations Limited (SGI). Tell us about your organisation and what you're trying to transform — we'll reply within one business day.",
   },
   twitter: {
-    title: "Contact · Software Group Innovation",
+    title: "Contact · Software Gateway Integrations Limited",
     description:
-      "Get in touch with Software Group Innovation (SGI Africa). Tell us about your organisation and what you're trying to transform — we'll reply within one business day.",
+      "Get in touch with Software Gateway Integrations Limited (SGI). Tell us about your organisation and what you're trying to transform — we'll reply within one business day.",
   },
 };
 

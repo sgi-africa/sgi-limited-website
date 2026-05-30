@@ -22,11 +22,11 @@ export const sgiProducts = [
 ] as const;
 
 export const siteConfig = {
-  name: "Software Group Innovation",
+  name: "Software Gateway Integrations Limited",
   shortName: "SGI",
   tagline: "Technology Solutions for Impact-Driven Organizations",
   description:
-    "Software Group Innovation builds digital systems that drive financial inclusion, community transformation and digital empowerment across Africa and beyond.",
+    "Software Gateway Integrations Limited builds digital systems that drive financial inclusion, community transformation and digital empowerment across Africa and beyond.",
   email: "info@sgi-africa.com",
   /** Street + mailing lines (single source of truth for office address). */
   officeAddressLines: [

@@ -31,22 +31,22 @@ import { StatCard } from "@/components/site/stat-card";
 import { sgiProducts, siteConfig } from "@/components/site/nav-config";
 
 export const metadata: Metadata = {
-  title: "Software Group Innovation — Technology Solutions for Impact-Driven Organizations",
+  title: "Software Gateway Integrations Limited — Technology Solutions for Impact-Driven Organizations",
   description:
-    "SGI Africa is an African technology startup and innovation ecosystem building digital systems for financial inclusion, health innovation, cybersecurity and community transformation across Africa and beyond.",
+    "Software Gateway Integrations Limited (SGI) is an African technology company and innovation ecosystem building digital systems for financial inclusion, health innovation, cybersecurity and community transformation across Africa and beyond.",
   alternates: {
     canonical: SITE_URL,
   },
   openGraph: {
     url: SITE_URL,
-    title: "Software Group Innovation — Technology Solutions for Impact-Driven Organizations",
+    title: "Software Gateway Integrations Limited — Technology Solutions for Impact-Driven Organizations",
     description:
-      "SGI Africa is an African technology startup and innovation ecosystem building digital systems for financial inclusion, health innovation, cybersecurity and community transformation across Africa and beyond.",
+      "Software Gateway Integrations Limited (SGI) is an African technology company and innovation ecosystem building digital systems for financial inclusion, health innovation, cybersecurity and community transformation across Africa and beyond.",
   },
   twitter: {
-    title: "Software Group Innovation — Technology Solutions for Impact-Driven Organizations",
+    title: "Software Gateway Integrations Limited — Technology Solutions for Impact-Driven Organizations",
     description:
-      "SGI Africa is an African technology startup and innovation ecosystem building digital systems for financial inclusion, health innovation, cybersecurity and community transformation across Africa and beyond.",
+      "Software Gateway Integrations Limited (SGI) is an African technology company and innovation ecosystem building digital systems for financial inclusion, health innovation, cybersecurity and community transformation across Africa and beyond.",
   },
 };
 
@@ -188,15 +188,6 @@ export default function Home() {
 
         <div className="relative grid items-center gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <FadeIn>
-              <span className="inline-flex w-fit items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-accent">
-                <span
-                  className="size-1.5 rounded-full bg-accent"
-                  aria-hidden
-                />
-                Software Group Innovation
-              </span>
-            </FadeIn>
 
             <FadeIn delay={0.05}>
               <h1 className="mt-5 font-heading text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl">

@@ -1,6 +1,6 @@
-# Software Group Innovation (SGI) - Website
+# Software Gateway Integrations Limited (SGI) - Website
 
-Production-ready, dark-themed marketing site for **Software Group Innovation** -
+Production-ready, dark-themed marketing site for **Software Gateway Integrations Limited** -
 "Technology Solutions for Impact-Driven Organizations".
 
 Built with **Next.js 16 (App Router)**, **Tailwind CSS v4**, **shadcn/ui** (radix-nova

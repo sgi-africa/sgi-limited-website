@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Software Group Innovation — Technology Solutions for Impact-Driven Organizations";
+export const alt = "Software Gateway Integrations Limited — Technology Solutions for Impact-Driven Organizations";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -82,7 +82,7 @@ export default function OgImage() {
               letterSpacing: "-0.02em",
             }}
           >
-            Software Group Innovation
+            Software Gateway Integrations
           </span>
         </div>
 
@@ -112,7 +112,7 @@ export default function OgImage() {
                 textTransform: "uppercase",
               }}
             >
-              African Technology Startup
+              African Technology Company
             </span>
           </div>
           <div
