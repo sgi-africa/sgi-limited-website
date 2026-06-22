@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {
+  ArrowUpRightIcon,
   ClockIcon,
   GlobeIcon,
   MailIcon,
@@ -10,14 +11,13 @@ import {
 import { FadeIn } from "@/components/site/fade-in";
 import { GradientBlob } from "@/components/site/gradient-blob";
 import { Section } from "@/components/site/section";
+import { Button } from "@/components/ui/button";
 import { siteConfig, SITE_URL } from "@/components/site/nav-config";
-
-import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Software Gateway Integrations Limited (SGI). Tell us about your organisation and what you're trying to transform — we'll reply within one business day.",
+    "Get in touch with Software Gateway Integrations Limited (SGI). Email us about your organisation and what you're trying to transform — we'll reply within one business day.",
   alternates: {
     canonical: `${SITE_URL}/contact`,
   },
@@ -25,12 +25,12 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/contact`,
     title: "Contact · Software Gateway Integrations Limited",
     description:
-      "Get in touch with Software Gateway Integrations Limited (SGI). Tell us about your organisation and what you're trying to transform — we'll reply within one business day.",
+      "Get in touch with Software Gateway Integrations Limited (SGI). Email us about your organisation and what you're trying to transform — we'll reply within one business day.",
   },
   twitter: {
     title: "Contact · Software Gateway Integrations Limited",
     description:
-      "Get in touch with Software Gateway Integrations Limited (SGI). Tell us about your organisation and what you're trying to transform — we'll reply within one business day.",
+      "Get in touch with Software Gateway Integrations Limited (SGI). Email us about your organisation and what you're trying to transform — we'll reply within one business day.",
   },
 };
 
@@ -57,6 +57,8 @@ const contactDetails = [
     value: "Within 1 business day",
   },
 ] as const;
+
+const mailtoHref = `mailto:${siteConfig.email}?subject=${encodeURIComponent("Project enquiry — SGI")}&body=${encodeURIComponent("Hi SGI team,\n\nI'm reaching out about:\n\n")}`;
 
 export default function ContactPage() {
   return (
@@ -90,119 +92,104 @@ export default function ContactPage() {
           <FadeIn delay={0.1}>
             <p className="mt-6 max-w-3xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
               Tell us about your organisation and what you&rsquo;re trying to
-              transform. We&rsquo;ll get back to you within one business day with a
-              clear, honest next step.
+              transform. Email us directly and we&rsquo;ll get back to you within
+              one business day with a clear, honest next step.
             </p>
           </FadeIn>
         </div>
       </Section>
 
-      {/* FORM + INFO */}
+      {/* CONTACT INFO */}
       <Section size="md" className="pb-28">
-        <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
-          {/* INFO CARD */}
-          <FadeIn className="lg:col-span-5">
-            <aside className="relative h-full overflow-hidden rounded-3xl border border-border/60 bg-card/70 p-8 sm:p-10">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -right-32 -top-32 size-72 rounded-full bg-[radial-gradient(circle,rgba(0,212,255,0.25),transparent_70%)] blur-3xl"
-              />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -left-24 -bottom-24 size-72 rounded-full bg-[radial-gradient(circle,rgba(10,37,64,0.6),transparent_70%)] blur-3xl"
-              />
+        <FadeIn className="mx-auto max-w-2xl">
+          <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-card/70 p-8 sm:p-10">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -right-32 -top-32 size-72 rounded-full bg-[radial-gradient(circle,rgba(0,212,255,0.25),transparent_70%)] blur-3xl"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -left-24 -bottom-24 size-72 rounded-full bg-[radial-gradient(circle,rgba(10,37,64,0.6),transparent_70%)] blur-3xl"
+            />
 
-              <div className="relative space-y-8">
-                <div className="space-y-3">
-                  <span className="inline-flex w-fit items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-accent">
-                    <span
-                      aria-hidden
-                      className="size-1.5 rounded-full bg-accent"
-                    />
-                    Get in touch
-                  </span>
-                  <h2 className="font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                    We&rsquo;d love to hear what you&rsquo;re working on.
-                  </h2>
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    Reach out by form or email - we read every message and
-                    reply within one business day.
-                  </p>
-                </div>
-
-                <ul className="space-y-4">
-                  {contactDetails.map((detail) => (
-                    <li
-                      key={detail.label}
-                      className="flex items-start gap-3 rounded-xl border border-border/40 bg-background/30 p-4"
-                    >
-                      <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg border border-accent/30 bg-accent/10 text-accent">
-                        <detail.icon className="size-4" />
-                      </span>
-                      <div className="space-y-0.5">
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                          {detail.label}
-                        </p>
-                        {"lines" in detail ? (
-                          <div className="space-y-1">
-                            {detail.lines.map((line) => (
-                              <p
-                                key={line}
-                                className="text-sm font-medium leading-snug text-foreground"
-                              >
-                                {line}
-                              </p>
-                            ))}
-                          </div>
-                        ) : "href" in detail && detail.href ? (
-                          <a
-                            href={detail.href}
-                            className="text-sm font-medium text-foreground transition-colors hover:text-accent"
-                          >
-                            {detail.value}
-                          </a>
-                        ) : "value" in detail ? (
-                          <p className="text-sm font-medium text-foreground">
-                            {detail.value}
-                          </p>
-                        ) : null}
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="rounded-2xl border border-border/40 bg-background/30 p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
-                    Prefer email?
-                  </p>
-                  <a
-                    href={`mailto:${siteConfig.email}?subject=Project%20enquiry%20—%20SGI`}
-                    className="mt-1 inline-flex items-center gap-1.5 font-heading text-base font-semibold text-foreground transition hover:text-accent"
-                  >
-                    {siteConfig.email}
-                    <span aria-hidden>→</span>
-                  </a>
-                </div>
-              </div>
-            </aside>
-          </FadeIn>
-
-          {/* FORM */}
-          <FadeIn delay={0.1} className="lg:col-span-7">
-            <div className="rounded-3xl border border-border/60 bg-card p-6 sm:p-10">
-              <div className="mb-8 space-y-2">
+            <div className="relative space-y-8">
+              <div className="space-y-3 text-center">
+                <span className="inline-flex w-fit items-center rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-accent">
+                  Get in touch
+                </span>
                 <h2 className="font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                  Send us a message
+                  Email us directly
                 </h2>
-                <p className="text-sm text-muted-foreground">
-                  Fields marked required are needed so we can route your
-                  enquiry to the right team.
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  We read every message and reply within one business day.
+                  Include your organisation, goal, and timeline so we can help
+                  faster.
                 </p>
               </div>
-              <ContactForm />
+
+              <div className="flex flex-col items-center gap-4 rounded-2xl border border-border/40 bg-background/30 p-6 text-center">
+                <span className="inline-flex size-14 items-center justify-center rounded-2xl border border-accent/30 bg-accent/10 text-accent">
+                  <MailIcon className="size-6" />
+                </span>
+                <div className="space-y-1">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                    Email
+                  </p>
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="font-heading text-xl font-semibold text-foreground transition-colors hover:text-accent sm:text-2xl"
+                  >
+                    {siteConfig.email}
+                  </a>
+                </div>
+                <Button
+                  asChild
+                  size="lg"
+                  className="h-12 bg-brand-gradient px-8 text-base font-semibold text-white"
+                >
+                  <a href={mailtoHref}>
+                    Send an email
+                    <ArrowUpRightIcon className="ml-1.5 size-4" />
+                  </a>
+                </Button>
+              </div>
+
+              <ul className="grid gap-4 sm:grid-cols-2">
+                {contactDetails.slice(1).map((detail) => (
+                  <li
+                    key={detail.label}
+                    className="flex items-start gap-3 rounded-xl border border-border/40 bg-background/30 p-4"
+                  >
+                    <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-lg border border-accent/30 bg-accent/10 text-accent">
+                      <detail.icon className="size-4" />
+                    </span>
+                    <div className="space-y-0.5">
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                        {detail.label}
+                      </p>
+                      {"lines" in detail ? (
+                        <div className="space-y-1">
+                          {detail.lines.map((line) => (
+                            <p
+                              key={line}
+                              className="text-sm font-medium leading-snug text-foreground"
+                            >
+                              {line}
+                            </p>
+                          ))}
+                        </div>
+                      ) : "value" in detail ? (
+                        <p className="text-sm font-medium text-foreground">
+                          {detail.value}
+                        </p>
+                      ) : null}
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </FadeIn>
-        </div>
+          </div>
+        </FadeIn>
       </Section>
     </>
   );
