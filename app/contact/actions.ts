@@ -1,6 +1,6 @@
 "use server";
 
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
 import { siteConfig } from "@/components/site/nav-config";
 
@@ -8,10 +8,23 @@ import type { ContactState } from "./types";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function getResendClient(): Resend | null {
-  const key = process.env.RESEND_API_KEY?.trim();
-  if (!key) return null;
-  return new Resend(key);
+/** Zoho Mail SMTP — same servers you use in Outlook, Apple Mail, etc. */
+const ZOHO_SMTP = {
+  host: "smtp.zoho.com",
+  port: 587,
+  secure: false,
+} as const;
+
+function getZohoTransporter() {
+  const user =
+    process.env.ZOHO_EMAIL?.trim() ?? siteConfig.email;
+  const pass = process.env.ZOHO_APP_PASSWORD?.trim();
+  if (!pass) return null;
+
+  return nodemailer.createTransport({
+    ...ZOHO_SMTP,
+    auth: { user, pass },
+  });
 }
 
 export async function submitContact(
@@ -37,42 +50,18 @@ export async function submitContact(
     };
   }
 
-  const resend = getResendClient();
-  if (!resend) {
-    console.error("[contact] RESEND_API_KEY is not set.");
+  const transporter = getZohoTransporter();
+  if (!transporter) {
+    console.error("[contact] ZOHO_APP_PASSWORD is not set.");
     return {
       status: "error",
       message:
-        "We couldn’t send your message right now. Please email us directly or try again later.",
+        "We couldn't send your message right now. Please email us directly or try again later.",
       values: { name, email, message },
     };
   }
 
-  const from = process.env.RESEND_FROM?.trim();
-  if (!from) {
-    console.error("[contact] RESEND_FROM is not set.");
-    return {
-      status: "error",
-      message:
-        "Email delivery is not configured. Please contact us by email directly.",
-      values: { name, email, message },
-    };
-  }
-
-  const toRaw = process.env.RESEND_TO?.trim() ?? siteConfig.email;
-  const to = toRaw
-    .split(",")
-    .map((a) => a.trim())
-    .filter(Boolean);
-  if (to.length === 0) {
-    console.error("[contact] No recipient (RESEND_TO / siteConfig.email).");
-    return {
-      status: "error",
-      message:
-        "We couldn’t send your message right now. Please email us directly.",
-      values: { name, email, message },
-    };
-  }
+  const from = process.env.ZOHO_EMAIL?.trim() ?? siteConfig.email;
 
   const subject = `[${siteConfig.shortName} Contact] ${name}`;
   const text = [
@@ -86,29 +75,19 @@ export async function submitContact(
   ].join("\n");
 
   try {
-    const { error } = await resend.emails.send({
+    await transporter.sendMail({
       from,
-      to,
-      replyTo: email ? [email] : undefined,
+      to: siteConfig.email,
+      replyTo: email,
       subject,
       text,
     });
-
-    if (error) {
-      console.error("[contact] Resend API error:", error);
-      return {
-        status: "error",
-        message:
-          "We couldn’t send your message. Please try again in a moment or email us directly.",
-        values: { name, email, message },
-      };
-    }
   } catch (e) {
     console.error("[contact] send failed:", e);
     return {
       status: "error",
       message:
-        "We couldn’t send your message. Please try again in a moment or email us directly.",
+        "We couldn't send your message. Please try again in a moment or email us directly.",
       values: { name, email, message },
     };
   }
